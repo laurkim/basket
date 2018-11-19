@@ -7,19 +7,19 @@ import ShoppingList from "./ShoppingList.js";
 class GroceryContainer extends Component {
     state = defaultState;
 
-    addItemToBasket = item => {
+    addItemToBasket = (item, quantity) => {
         if (this.state.basket[item]) {
             this.setState({
                 basket: {
                     ...this.state.basket, 
-                    item: this.state.basket[item]++
+                    item: this.state.basket[item] += quantity
                 }
             })
         } else {
             this.setState({
                 basket: {
                     ...this.state.basket,
-                    item: 1
+                   [item]: quantity
                 }
             })
         }
@@ -29,7 +29,7 @@ class GroceryContainer extends Component {
         return (
             <div id="grocery-container">
                 <GroceryList items={this.state.items} addItem={this.addItemToBasket} />
-                <ShoppingList />
+                <ShoppingList basket={this.state.basket} />
             </div>
         )
     }

@@ -4,13 +4,50 @@ $shadow-color: #ababab;
 $nunito-sans: Nunito Sans, sans-serif;
 $item-border: 2px solid;
 $item-border-radius: 5px;
+$double-rem: 2rem;
+$library-override: !important;
+
+@mixin primary-button() {
+    background: $primary-color;
+    opacity: 0.8;
+    border-radius: 100px;
+    padding: 0.8rem 1.5rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    margin: 0 15px;
+}
+
+@mixin grid-columns($columns) {
+    grid-template-columns: repeat($columns, 1fr);
+}
+
+@mixin grid-rows($rows) {
+    grid-template-rows: repeat($rows, 1fr);
+}
+
+@mixin column-gap($gap) {
+    grid-column-gap: $gap;
+}
+
+@mixin row-gap($gap) {
+    grid-row-gap: $gap;
+}
+
+@mixin justification() {
+    justify-items: center;
+}
+
+@mixin center-text() {
+    text-align: center;
+}
 
 body {
     font-family: $nunito-sans;
 }
 
 #app {
-    text-align: center; 
+    @include center-text();
     color: $primary-color;
 }
 
@@ -24,7 +61,7 @@ body {
     position: relative;
 
     #basket-description {
-        text-align: center;
+        @include center-text();
         font-size: 3rem;
         position: absolute;
         color: $secondary-color;
@@ -38,20 +75,20 @@ body {
 
 #grocery-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 2rem;
-    justify-items: center;
-    text-align: center;
-    padding: 2rem 2rem;
+    @include grid-columns(2);
+    @include column-gap($double-rem);
+    @include justification();
+    @include center-text();
+    padding: $double-rem $double-rem;
 
     #grocery-list {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        @include grid-columns(2);
         grid-auto-rows: auto; 
         width: 90%;
-        margin: 0 2rem;
-        grid-column-gap: 1.5rem;
-        grid-row-gap: 1.5rem;
+        margin: 0 $double-rem;
+        @include column-gap(1.5rem);
+        @include row-gap(1.5rem);
 
         #list-header {
             grid-row: 1;
@@ -64,7 +101,45 @@ body {
             border-radius: $item-border-radius;
             width: 100%;
             padding: 1rem 0;
-            grid-row-gap: 3rem;
+            @include row-gap(3rem);
+            text-align: center;
+
+            button {
+                @include primary-button()
+            }
+        }
+    }
+}
+
+.item-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: $double-rem 6rem;
+
+    #form {
+        display: grid;
+        @include grid-columns(3);
+        @include grid-rows(2);
+        @include row-gap(1.5rem);
+        @include justification();
+
+        input {
+            grid-column: 2;
+            align-items: center;
+        }
+
+        button {
+            margin-top: 2rem;
+            grid-column: 2;
+            grid-row: 2;
+            @include primary-button()
         }
     }
 }
