@@ -4,7 +4,7 @@ import "../App.scss";
 const ItemDetail = props => {
     console.log("props are", props)
     return (
-        <h1>{props.item}</h1>
+        <h3>{props.item}</h3>
     )
 }
 

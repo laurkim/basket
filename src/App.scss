@@ -46,12 +46,23 @@ body {
 
     #grocery-list {
         display: grid;
-        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto; 
+        width: 90%;
+        margin: 0 2rem;
+        grid-column-gap: 1.5rem;
+
+        #list-header {
+            grid-row: 1;
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
     }
 
-    h1 {
+    h3 {
         border: $item-border $primary-color;
         border-radius: $item-border-radius;
         width: 100%;
+        padding: 1.5rem 0;
     }
 }

@@ -26,10 +26,9 @@ class GroceryContainer extends Component {
     }
 
     render() {
-        const itemNames = Object.keys(this.state.items);
         return (
             <div id="grocery-container">
-                <GroceryList items={this.state.items} itemNames={itemNames} addItem={this.addItemToBasket} />
+                <GroceryList items={this.state.items} addItem={this.addItemToBasket} />
                 <ShoppingList />
             </div>
         )
