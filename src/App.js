@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./App.scss"; 
-import NavBar from "./components/nav.js";
+import Header from "./components/header.js";
 
 const App = () => {
     return (
         <div>
-            <NavBar />
+            <Header />
             <h1 id="app">Basket Rendered</h1>
         </div>
     )
