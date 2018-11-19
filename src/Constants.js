@@ -1,6 +1,9 @@
 export const defaultState = {
-    "Milk": 1,
-    "Strawberries": 3,
-    "Bread": 1,
-    "Peanut Butter": 2
+    items: {
+        "Milk": 5,
+        "Strawberries": 5,
+        "Bread": 5,
+        "Peanut Butter": 5
+    },
+    basket: {}
 }

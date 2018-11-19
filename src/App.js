@@ -1,16 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 import { hot } from "react-hot-loader";
 import "./App.scss"; 
 import Header from "./components/Header.js";
-import ListContainer from "./components/ListContainer.js";
+import GroceryContainer from "./components/GroceryContainer.js";
 
-const App = () => {
-    return (
-        <div>
-            <Header />
-            <ListContainer />
-        </div>
-    )
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <Header />
+                <GroceryContainer />
+            </div>
+        )
+    }
 }
 
 export default hot(module)(App);

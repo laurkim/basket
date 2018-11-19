@@ -1,5 +1,5 @@
 import React from "react";
-import { nav } from '../Constants.js'
+import { nav } from "../Constants.js"
 import "../App.scss";
 
 const Header = () => {

@@ -1,5 +1,8 @@
 $primary-color: #ff7800;
 $nunito-sans: Nunito Sans, sans-serif;
+$item-border: 2px solid orange;
+$item-border-radius: 5px;
+
 
 body {
     font-family: $nunito-sans;
@@ -29,4 +32,20 @@ body {
         transform: translate(-50%, -50%);
         color: black;
     }    
+}
+
+#grocery-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+
+    #grocery-list {
+        display: grid;
+    }
+
+    h1 {
+        border: $item-border;
+        border-radius: $item-border-radius;
+        width: 100%;
+    }
 }
