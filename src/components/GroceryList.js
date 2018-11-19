@@ -3,8 +3,7 @@ import ItemDetail from "./ItemDetail.js";
 import "../App.scss";
 
 const GroceryList = props => {
-    console.log("inside grocery list", props)
-    const mappedItems = props.itemNames.map(item => <ItemDetail key={item.name} />)
+    const mappedItems = props.itemNames.map(name => <ItemDetail key={name} item={name} addItem={props.addItem} />)
     return (
         <div id="grocery-list">
             {mappedItems}
