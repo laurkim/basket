@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { nav } from '../Constants.js'
 import "../App.scss";
 

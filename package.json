@@ -4,7 +4,7 @@
   "description": "A grocery shopping app built on React",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --hot",
+    "start": "webpack-dev-server --hot --mode development",
     "build": "webpack --mode development"
   },
   "author": "Laura Kim",
@@ -12,12 +12,14 @@
   "devDependencies": {
     "@babel/cli": "^7.1.0",
     "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.2",
     "css-loader": "^1.0.0",
     "file-loader": "^2.0.0",
     "node-sass": "^4.10.0",
+    "react-hot-loader": "^4.3.12",
     "sass": "^1.15.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",

@@ -1,1 +1,6 @@
-export const nav = "./assets/shopping_bag.jpg";
+export const defaultState = {
+    "Milk": 1,
+    "Strawberries": 3,
+    "Bread": 1,
+    "Peanut Butter": 2
+}

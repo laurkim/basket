@@ -1,15 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { hot } from "react-hot-loader";
 import "./App.scss"; 
-import Header from "./components/header.js";
+import Header from "./components/Header.js";
+import ListContainer from "./components/ListContainer.js";
 
 const App = () => {
     return (
         <div>
             <Header />
-            <h1 id="app">Basket Rendered</h1>
+            <ListContainer />
         </div>
     )
 }
 
-export default App;
+export default hot(module)(App);
