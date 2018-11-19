@@ -51,18 +51,20 @@ body {
         width: 90%;
         margin: 0 2rem;
         grid-column-gap: 1.5rem;
+        grid-row-gap: 1.5rem;
 
         #list-header {
             grid-row: 1;
             grid-column-start: 1;
             grid-column-end: 3;
         }
-    }
 
-    h3 {
-        border: $item-border $primary-color;
-        border-radius: $item-border-radius;
-        width: 100%;
-        padding: 1.5rem 0;
+        #item-detail {
+            border: $item-border $primary-color;
+            border-radius: $item-border-radius;
+            width: 100%;
+            padding: 1rem 0;
+            grid-row-gap: 3rem;
+        }
     }
 }
