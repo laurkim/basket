@@ -1,0 +1,1 @@
+export const nav = "./assets/shopping_bag.jpg";
