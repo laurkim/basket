@@ -19,23 +19,31 @@ class GroceryContainer extends Component {
     }
 
     removeItem = deleteItem => {
+        // find the index of the cart item in the basket array from state
         let itemIndex = this.state.basket.findIndex(item => item.name === deleteItem.name);
+
+        // retrieve the item from state (not the copy passed up from <BasketDetail />)
         let basketItem = this.state.basket[itemIndex];
+
+        // create a copy of the basket array inside state
         const currentState = this.state.basket.slice();
 
-        if (basketItem !== -1) {
-            if (basketItem.quantity === 1) {
-                currentState.splice(itemIndex, 1)
-                    this.setState({
-                        basket: currentState
-                    })
-            } else {
-                basketItem.quantity -= 1
-                currentState.splice(itemIndex, 1, basketItem)
+        // check what the quantity of the item inside the basket is 
+        // if there is only one quantity of the item left, remove the item object completely from state
+        // if there is more than one quantity of the item left, decrement the value of the quantity key inside 
+        // the item object and replace it in state
+
+        if (basketItem.quantity === 1) {
+            currentState.splice(itemIndex, 1)
                 this.setState({
                     basket: currentState
                 })
-            }
+        } else {
+            basketItem.quantity -= 1
+            currentState.splice(itemIndex, 1, basketItem)
+            this.setState({
+                basket: currentState
+            })
         }
     }
 
