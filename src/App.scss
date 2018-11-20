@@ -153,7 +153,7 @@ body {
     #form {
         display: grid;
         @include grid-columns(3);
-        @include grid-rows(2);
+        @include grid-rows(3);
         @include row-gap(1.5rem);
         @include justification();
 
@@ -162,10 +162,14 @@ body {
             align-items: center;
         }
 
+        #item-priority {
+            grid-column: 2;
+        }
+
         #add-item {
             margin-top: 2rem;
             grid-column: 1;
-            grid-row: 2;
+            grid-row: 3;
             @include primary-button($primary-color);
             white-space: nowrap;
         }
@@ -173,7 +177,7 @@ body {
         #hide-modal {
             margin-top: 2rem;
             grid-column: 3;
-            grid-row: 2;
+            grid-row: 3;
             @include primary-button($disabled-color);
             white-space: nowrap;
         }

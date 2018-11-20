@@ -31,14 +31,14 @@ class GroceryContainer extends Component {
             delete currentState[item]
             this.setState({
                 basket: currentState
-            }, () => console.log("if only 1", this.state))
+            })
         } else {
             this.setState({
                 basket: {
                     ...this.state.basket[item], 
                     [item]: this.state.basket[item] -= 1
                 }
-            }, () => console.log("if more than 1", this.state))
+            })
         }
     }
 

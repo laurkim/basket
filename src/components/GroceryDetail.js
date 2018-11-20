@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from "react";
 import ReactModal from "react-modal";
+
 import "../App.scss";
 ReactModal.setAppElement('#base');
 
 class GroceryDetail extends Component {
     state = {
         displayModal: false,
-        quantity: 0,
+        quantity: null,
         inBasket: false
     }
 
@@ -24,9 +25,7 @@ class GroceryDetail extends Component {
 
     handleChange = event => {
         let quantity = parseInt(event.target.value)
-        this.setState({
-            quantity
-        })
+        quantity ? this.setState({ quantity }) : this.setState({ quantity: null })
     }
 
     addItemToCart = event => {
@@ -47,7 +46,13 @@ class GroceryDetail extends Component {
                     contentLabel="Add Item"
                     className="item-modal">
                     <form id="form">
-                        <input type="number" placeholder="Quantity" onChange={this.handleChange} value={this.state.quantity} />
+                        <input type="text" placeholder="Quantity" onChange={this.handleChange} value={this.state.quantity} />
+                        <select id="item-priority">
+                            <option selected="selected">Designate Priority</option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
                         <button id="add-item" onClick={this.addItemToCart}>Add Item</button>
                         <button id="hide-modal" onClick={this.hideBuyingModal}>Go Back</button>
                     </form>
@@ -57,14 +62,19 @@ class GroceryDetail extends Component {
     }
 
     itemAddedMessage = () => {
-        return this.props.basket[this.props.item] ? <button disabled>Item in Cart</button> : <button onClick={this.displayBuyingModal}>Pick Quantity</button>
+        return (
+            <button disabled>Item in Cart</button>
+        )
     }
 
     render() {
+        console.log("state is", this.state);
+        console.log("-----");
+        
         return (
             <div id="item-detail">
                 <h3>{this.props.item}</h3>
-                { this.state.inBasket ? this.itemAddedMessage() : this.addItemModal() }
+                { this.props.basket[this.props.item] ? this.itemAddedMessage() : this.addItemModal() }
             </div>
         )
     }
