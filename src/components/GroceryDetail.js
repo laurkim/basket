@@ -1,17 +1,24 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import ReactModal from "react-modal";
 import "../App.scss";
 ReactModal.setAppElement('#base');
 
-class ItemDetail extends Component {
+class GroceryDetail extends Component {
     state = {
         displayModal: false,
-        quantity: 0
+        quantity: 0,
+        inBasket: false
     }
 
     displayBuyingModal = () => {
         this.setState({ 
             displayModal: true
+        })
+    }
+
+    hideBuyingModal = () => {
+        this.setState({
+            displayModal: false
         })
     }
 
@@ -26,14 +33,14 @@ class ItemDetail extends Component {
         event.preventDefault()
         this.props.addItem(this.props.item, this.state.quantity)
         this.setState({
-            displayModal: false
+            displayModal: false,
+            inBasket: true
         })
     }
 
-    render() {
+    addItemModal = () => {
         return (
-            <div id="item-detail">
-                <h3>{this.props.item}</h3>
+            <Fragment>
                 <button onClick={this.displayBuyingModal}>Pick Quantity</button>
                 <ReactModal
                     isOpen={this.state.displayModal}
@@ -41,15 +48,29 @@ class ItemDetail extends Component {
                     className="item-modal">
                     <form id="form">
                         <input type="number" placeholder="Quantity" onChange={this.handleChange} value={this.state.quantity} />
-                        <button onClick={this.addItemToCart}>Add to Cart</button>
+                        <button id="add-item" onClick={this.addItemToCart}>Add Item</button>
+                        <button id="hide-modal" onClick={this.hideBuyingModal}>Go Back</button>
                     </form>
                 </ReactModal>
+            </Fragment>
+        )
+    }
+
+    itemAddedMessage = () => {
+        return this.props.basket[this.props.item] ? <button disabled>Item in Cart</button> : <button onClick={this.displayBuyingModal}>Pick Quantity</button>
+    }
+
+    render() {
+        return (
+            <div id="item-detail">
+                <h3>{this.props.item}</h3>
+                { this.state.inBasket ? this.itemAddedMessage() : this.addItemModal() }
             </div>
         )
     }
 }
 
-export default ItemDetail;
+export default GroceryDetail;
 
 
 
