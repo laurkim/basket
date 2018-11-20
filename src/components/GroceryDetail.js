@@ -1,13 +1,12 @@
 import React, { Component, Fragment } from "react";
 import ReactModal from "react-modal";
-
 import "../App.scss";
 ReactModal.setAppElement('#base');
 
 class GroceryDetail extends Component {
     state = {
         displayModal: false,
-        quantity: null,
+        quantity: "",
         inBasket: false
     }
 
@@ -25,7 +24,7 @@ class GroceryDetail extends Component {
 
     handleChange = event => {
         let quantity = parseInt(event.target.value)
-        quantity ? this.setState({ quantity }) : this.setState({ quantity: null })
+        quantity ? this.setState({ quantity }) : this.setState({ quantity: "" })
     }
 
     addItemToCart = event => {
@@ -47,12 +46,6 @@ class GroceryDetail extends Component {
                     className="item-modal">
                     <form id="form">
                         <input type="text" placeholder="Quantity" onChange={this.handleChange} value={this.state.quantity} />
-                        <select id="item-priority">
-                            <option selected="selected">Designate Priority</option>
-                            <option value="low">Low</option>
-                            <option value="medium">Medium</option>
-                            <option value="high">High</option>
-                        </select>
                         <button id="add-item" onClick={this.addItemToCart}>Add Item</button>
                         <button id="hide-modal" onClick={this.hideBuyingModal}>Go Back</button>
                     </form>
@@ -68,13 +61,12 @@ class GroceryDetail extends Component {
     }
 
     render() {
-        console.log("state is", this.state);
-        console.log("-----");
-        
+        let itemIndex = this.props.basket.findIndex(item => item.name === this.props.item);
+
         return (
             <div id="item-detail">
                 <h3>{this.props.item}</h3>
-                { this.props.basket[this.props.item] ? this.itemAddedMessage() : this.addItemModal() }
+                { itemIndex !== -1 ? this.itemAddedMessage() : this.addItemModal() }
             </div>
         )
     }

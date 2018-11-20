@@ -121,6 +121,11 @@ body {
         #basket-header {
             margin: 0 0 1.5rem 0;
         }
+
+        #sort-button {
+            @include primary-button($primary-color);
+            margin: 0 0 1.5rem 0;
+        }
     
         #basket-detail {
             margin: 0 0 1.5rem 0;
@@ -153,7 +158,7 @@ body {
     #form {
         display: grid;
         @include grid-columns(3);
-        @include grid-rows(3);
+        @include grid-rows(2);
         @include row-gap(1.5rem);
         @include justification();
 
@@ -162,14 +167,10 @@ body {
             align-items: center;
         }
 
-        #item-priority {
-            grid-column: 2;
-        }
-
         #add-item {
             margin-top: 2rem;
             grid-column: 1;
-            grid-row: 3;
+            grid-row: 2;
             @include primary-button($primary-color);
             white-space: nowrap;
         }
@@ -177,7 +178,7 @@ body {
         #hide-modal {
             margin-top: 2rem;
             grid-column: 3;
-            grid-row: 3;
+            grid-row: 2;
             @include primary-button($disabled-color);
             white-space: nowrap;
         }

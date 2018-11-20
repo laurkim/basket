@@ -13,5 +13,5 @@ export const defaultState = {
         "Turkey", 
         "Cranberry Sauce"
     ],
-    basket: {}
+    basket: []
 }

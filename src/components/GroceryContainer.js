@@ -7,38 +7,35 @@ import ShoppingList from "./ShoppingList.js";
 class GroceryContainer extends Component {
     state = defaultState;
 
-    addItemToBasket = (item, quantity) => {
-        if (this.state.basket[item]) {
-            this.setState({
-                basket: {
-                    ...this.state.basket, 
-                    item: this.state.basket[item] += quantity
-                }
-            })
-        } else {
-            this.setState({
-                basket: {
-                    ...this.state.basket,
-                   [item]: quantity 
-                }
-            })
+    addItemToBasket = (name, quantity) => {
+        const newItem = {
+            name,
+            quantity
         }
+
+        this.setState({
+            basket: [...this.state.basket, newItem]
+        })
     }
 
-    removeItem = item => {
-        if (this.state.basket[item] === 1) {
-            const currentState = {...this.state.basket}
-            delete currentState[item]
-            this.setState({
-                basket: currentState
-            })
-        } else {
-            this.setState({
-                basket: {
-                    ...this.state.basket[item], 
-                    [item]: this.state.basket[item] -= 1
-                }
-            })
+    removeItem = deleteItem => {
+        let itemIndex = this.state.basket.findIndex(item => item.name === deleteItem.name);
+        let basketItem = this.state.basket[itemIndex];
+        const currentState = this.state.basket.slice();
+
+        if (basketItem !== -1) {
+            if (basketItem.quantity === 1) {
+                currentState.splice(itemIndex, 1)
+                    this.setState({
+                        basket: currentState
+                    })
+            } else {
+                basketItem.quantity -= 1
+                currentState.splice(itemIndex, 1, basketItem)
+                this.setState({
+                    basket: currentState
+                })
+            }
         }
     }
 
