@@ -8,11 +8,13 @@ class GroceryContainer extends Component {
     state = defaultState;
 
     addItemToBasket = (name, quantity) => {
+        // create a new object with key-value pairs for the name and quantity for the item
         const newItem = {
             name,
             quantity
         }
 
+        // add the new object to the array of existing items in state
         this.setState({
             basket: [...this.state.basket, newItem]
         })
@@ -32,7 +34,6 @@ class GroceryContainer extends Component {
         // if there is only one quantity of the item left, remove the item object completely from state
         // if there is more than one quantity of the item left, decrement the value of the quantity key inside 
         // the item object and replace it in state
-
         if (basketItem.quantity === 1) {
             currentState.splice(itemIndex, 1)
                 this.setState({
